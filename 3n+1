@@ -1,0 +1,41 @@
+def foo(n):
+    """
+    Apply two rules:
+    - if n is odd, multiply by three and add one
+    - if n is even, divide by two
+
+    :param n: number
+    :return:
+    """
+
+    if (n % 2) == 0:  # If n is even
+        return n / 2
+    else:  # if n is odd
+        return int(3 * n + 1)
+
+
+def check(l):
+    if l[-3:] != [4.0, 2.0, 1.0]:
+        print(False, l)
+        exit()
+    else:
+        print(True, l)
+
+
+def solve(n):
+    l = [n, foo(n)]
+
+    while l[-1] != 1:
+
+        l.append(foo(l[-1]))
+
+        if l[-1] == 1:
+            check(l)
+            break
+
+
+for i in range(10**98):
+    if i == 0:
+        continue
+
+    solve(i)
